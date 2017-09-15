@@ -1,6 +1,7 @@
 class Bitmap
-	attr_reader :width, :height
+	attr_reader :width, :height,:pixels
 
+	COLOR_WHITE = 'O'
 
 	def initialize(new_width, new_height)
 		raise 'Width should be a valid integer' unless new_width.is_a? Integer
@@ -10,5 +11,8 @@ class Bitmap
 
 		@width = new_width
 		@height = new_height
+		@pixels = Array.new(@height) {Array.new(@width,COLOR_WHITE)}
 	end
+
+
 end
