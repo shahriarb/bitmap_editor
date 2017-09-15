@@ -33,6 +33,20 @@ describe Bitmap do
 
 		end
 
+		context 'given 10 as width' do
+			it 'width should be 10' do
+				bitmap = Bitmap.new(10,0)
+				expect(bitmap.width).to eq(10)
+			end
+		end
+
+		context 'given 10 as height' do
+			it 'height should be 10' do
+				bitmap = Bitmap.new(10,0)
+				expect(bitmap.height).to eq(10)
+			end
+		end
+
 
 
 	end
