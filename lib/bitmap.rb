@@ -14,5 +14,8 @@ class Bitmap
 		@pixels = Array.new(@height) {Array.new(@width,COLOR_WHITE)}
 	end
 
+	def to_s
+		@pixels.inject('') {|result,row|  result + "#{row.join}\n" }.strip
+	end
 
 end

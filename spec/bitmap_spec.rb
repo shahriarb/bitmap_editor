@@ -40,42 +40,55 @@ describe Bitmap do
 
 		context 'given 10 as width' do
 			it 'width should be 10' do
-				bitmap = Bitmap.new(10,0)
-				expect(bitmap.width).to eq(10)
+				expect(Bitmap.new(10,0).width).to eq(10)
 			end
 		end
 
 		context 'given 10 as height' do
 			it 'height should be 10' do
-				bitmap = Bitmap.new(0,10)
-				expect(bitmap.height).to eq(10)
+				expect(Bitmap.new(0,10).height).to eq(10)
 			end
 		end
 
 		context 'given 0 as width and 0 as height' do
 			it 'should have an empty array as pixels' do
-				bitmap = Bitmap.new(0,0)
-				expect(bitmap.pixels).to eq([])
+				expect(Bitmap.new(0,0).pixels).to eq([])
 			end
 		end
 
 		context 'given 10 as width and 20 as height' do
+			before do
+				@bitmap = Bitmap.new(10,20)
+			end
+
 			it 'should have a two dimensional array as pixels with 20 rows' do
-				bitmap = Bitmap.new(10,20)
-				expect(bitmap.pixels.size).to eq(20)
+				expect(@bitmap.pixels.size).to eq(20)
 			end
 
 			it 'should have a two dimensional array as pixels with 10 columns' do
-				bitmap = Bitmap.new(10,20)
-				expect(bitmap.pixels.all? {|row| row.size == 10}).to be true
+				expect(@bitmap.pixels.all? {|row| row.size == 10}).to be true
 			end
 
 			it 'should have a 10*20 two dimensional array as pixels all of them contains Bitmap::COLOR_WHITE' do
-				bitmap = Bitmap.new(10,20)
-				expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOR_WHITE} }).to be true
+				expect(@bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOR_WHITE} }).to be true
 			end
 
 		end
 
 	end
+
+	describe '#to_s' do
+		context 'given 0 as width and 0 as height' do
+			it 'should be empty string'do
+				expect(Bitmap.new(0,0).to_s).to eq('')
+			end
+		end
+
+		context 'given 2 as width and 2 as height' do
+			it 'should return OO\nOO' do
+				expect(Bitmap.new(2,2).to_s).to eq("OO\nOO")
+			end
+		end
+	end
+
 end
