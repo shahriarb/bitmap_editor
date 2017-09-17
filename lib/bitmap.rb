@@ -9,7 +9,7 @@ class Bitmap
 		validate_initials(new_width, new_height)
 		@width = new_width
 		@height = new_height
-		@pixels = Array.new(@height) {Array.new(@width, COLOUR_WHITE)}
+		self.clear
 	end
 
 	def to_s
@@ -27,6 +27,10 @@ class Bitmap
 		validate_coordinate(x,y)
 
 		@pixels[y-1][x-1]
+	end
+
+	def clear
+		@pixels = Array.new(@height) {Array.new(@width, COLOUR_WHITE)}
 	end
 
 	private

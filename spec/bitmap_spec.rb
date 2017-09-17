@@ -237,7 +237,17 @@ describe Bitmap do
 				expect(bitmap.get_colour(1,2)).to eq('C')
 			end
 		end
+	end
 
+	describe '#clear' do
+		it 'should set all pixels to COLOUR_WHITE' do
+			bitmap = Bitmap.new(10,20)
+			expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to be true
+			bitmap.set_colour(1,1,'C')
+			expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to_not be true
+			bitmap.clear
+			expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to be true
+		end
 	end
 
 end
