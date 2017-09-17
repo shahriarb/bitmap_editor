@@ -32,8 +32,16 @@ describe Bitmap do
 				expect {Bitmap.new(-1,0)}.to raise_error('Width should be a positive integer')
 			end
 
+			it 'should raise exception with width more than 250' do
+				expect {Bitmap.new(251,0)}.to raise_error('Width should be less than 250')
+			end
+
 			it 'should raise exception with negative height' do
 				expect {Bitmap.new(0,-1)}.to raise_error('Height should be a positive integer')
+			end
+
+			it 'should raise exception with height more than 250' do
+				expect {Bitmap.new(0,251)}.to raise_error('Height should be less than 250')
 			end
 
 		end
