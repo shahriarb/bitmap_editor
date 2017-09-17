@@ -175,6 +175,48 @@ describe Bitmap do
 				expect(bitmap.pixels[1][0]).to eq('C')
 			end
 		end
+	end
+
+	describe '#get_color' do
+		context  'With wrong arguments' do
+			it 'should raise ArgumentError with no arguments' do
+				expect {Bitmap.new(10,20).get_colour}.to raise_error(ArgumentError)
+			end
+
+			it 'should raise ArgumentError with one arguments' do
+				expect {Bitmap.new(10,20).get_colour(1)}.to raise_error(ArgumentError)
+			end
+
+			it 'should raise exception with wrong X type' do
+				expect {Bitmap.new(10,20).get_colour('1',1)}.to raise_error('X should be a valid integer')
+			end
+
+			it 'should raise exception with wrong Y type' do
+				expect {Bitmap.new(10,20).get_colour(1,'1')}.to raise_error('Y should be a valid integer')
+			end
+
+		end
+
+		context 'given x coordinate greater than width' do
+			it 'should raise exception' do
+				expect { Bitmap.new(10,20).get_colour(20,1)}.to raise_error('X coordinate should be less than width(10)')
+			end
+		end
+
+		context 'given y coordinate greater than height' do
+			it 'should raise exception' do
+				expect { Bitmap.new(10,10).get_colour(1,20)}.to raise_error('Y coordinate should be less than height(10)')
+			end
+		end
+
+		context 'set colour of x = 1 and y = 2 to colour C' do
+			it 'should return C as colour of x = 1 and y = 2' do
+				bitmap = Bitmap.new(10,10)
+				expect(bitmap.get_colour(1,2)).to eq(Bitmap::COLOUR_WHITE)
+				bitmap.set_colour(1,2,'C')
+				expect(bitmap.get_colour(1,2)).to eq('C')
+			end
+		end
 
 	end
 

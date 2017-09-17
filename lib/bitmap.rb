@@ -31,4 +31,15 @@ class Bitmap
 
 		@pixels[y-1][x-1] = new_colour
 	end
+
+	def get_colour(x,y)
+		raise 'X should be a valid integer' unless x.is_a? Integer
+		raise 'X coordinate should be between 1 and 250' unless x > 0 && x <= 250
+		raise "X coordinate should be less than width(#{@width})" if x > @width
+		raise 'Y should be a valid integer' unless y.is_a? Integer
+		raise 'Y coordinate should be between 1 and 250' unless y > 0 && y <= 250
+		raise "Y coordinate should be less than height(#{@height})" if y > @height
+		@pixels[y-1][x-1]
+	end
+
 end
