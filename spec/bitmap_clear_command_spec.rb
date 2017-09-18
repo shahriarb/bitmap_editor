@@ -28,14 +28,15 @@ describe BitmapClearCommand do
 			expect(error_message).to eq('This command needs a valid bitmap')
 		end
 
-		it 'should clear the passed bitmap' do
+		it 'should clear the passed bitmap with no error' do
 			bitmap = Bitmap.new(10,20)
 			expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to be true
 			bitmap.set_colour(1,1,'C')
 			expect(bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to_not be true
 
-			result_bitmap , _, _ = @bitmap_clear_command.execute(bitmap)
+			result_bitmap , _, error_message = @bitmap_clear_command.execute(bitmap)
 			expect(result_bitmap.pixels.all? {|row| row.all? {|pixel| pixel == Bitmap::COLOUR_WHITE}}).to be true
+			expect(error_message).to eq('')
 		end
 	end
 end
