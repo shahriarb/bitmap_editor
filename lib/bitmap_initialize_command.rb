@@ -1,10 +1,10 @@
 require 'bitmap_command'
 
 class BitmapInitializeCommand < BitmapCommand
-	attr_reader :width, :height,:pixels
+	attr_reader :width, :height
 
 	def initialize(new_width, new_height)
-		BitmapUtils.validate_initials(new_width, new_height)
+		BitmapUtils.validate_sizes(new_width, 'Width', new_height, 'Height')
 		@width = new_width
 		@height = new_height
 	end

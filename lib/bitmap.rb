@@ -6,7 +6,7 @@ class Bitmap
 	COLOUR_WHITE = 'O'
 
 	def initialize(new_width, new_height)
-		BitmapUtils.validate_initials(new_width, new_height)
+		BitmapUtils.validate_sizes(new_width, 'Width', new_height, 'Height')
 		@width = new_width
 		@height = new_height
 		self.clear
@@ -18,7 +18,7 @@ class Bitmap
 
 	def set_colour(x,y,new_colour)
 		validate_coordinate(x,y)
-		raise ArgumentError.new('Colour should be a single capital letter') unless  new_colour.match(/[[:upper:]]/) && (new_colour.size == 1)
+		BitmapUtils.validate_colour(new_colour)
 
 		@pixels[y-1][x-1] = new_colour
 	end
@@ -36,9 +36,8 @@ class Bitmap
 	private
 
 	def validate_coordinate(x,y)
-		raise ArgumentError.new("X #{BitmapUtils::SIZE_PARAM_ERROR}") unless BitmapUtils.valid_size_param? x
+		BitmapUtils.validate_sizes(x, 'X', y, 'Y')
 		raise ArgumentError.new("X should be less than width(#{@width})") if x > @width
-		raise ArgumentError.new("Y #{BitmapUtils::SIZE_PARAM_ERROR}") unless BitmapUtils.valid_size_param? y
 		raise ArgumentError.new("Y should be less than height(#{@height})") if y > @height
 	end
 

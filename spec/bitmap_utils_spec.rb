@@ -30,42 +30,69 @@ describe BitmapUtils do
 		end
 	end
 
-	describe '.validate_initials' do
+	describe '.validate_sizes' do
 
 		context 'With wrong arguments' do
 			it 'should raise ArgumentError with no argument' do
-				expect {BitmapUtils.validate_initials}.to raise_error(ArgumentError)
+				expect {BitmapUtils.validate_sizes}.to raise_error(ArgumentError)
 			end
 
 			it 'should raise ArgumentError with one argument' do
-				expect {BitmapUtils.validate_initials(1)}.to raise_error(ArgumentError)
+				expect {BitmapUtils.validate_sizes(1)}.to raise_error(ArgumentError)
 			end
 
-			it 'should raise exception with wrong width type' do
-				expect {BitmapUtils.validate_initials('1',1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise ArgumentError with two argument' do
+				expect {BitmapUtils.validate_sizes(1, 'Width')}.to raise_error(ArgumentError)
 			end
 
-			it 'should raise exception with zero width' do
-				expect {BitmapUtils.validate_initials(0,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise ArgumentError with three argument' do
+				expect {BitmapUtils.validate_sizes(1, 'Width', 1)}.to raise_error(ArgumentError)
 			end
 
-			it 'should raise exception with width more than BitmapUtils::MAX_LENGTH' do
-				expect {BitmapUtils.validate_initials(BitmapUtils::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise exception with wrong param1 type' do
+				expect {BitmapUtils.validate_sizes('1', 'Width',1, 'Height')}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with wrong initial height type' do
-				expect {BitmapUtils.validate_initials(1,'1')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise exception with zero param1' do
+				expect {BitmapUtils.validate_sizes(0,'Width',1, 'Height')}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with zero height' do
-				expect {BitmapUtils.validate_initials(1,0)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise exception with param1 more than BitmapUtils::MAX_LENGTH' do
+				expect {BitmapUtils.validate_sizes(BitmapUtils::MAX_LENGTH + 1,'Width',1, 'Height')}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with height more than BitmapUtils::MAX_LENGTH' do
-				expect {BitmapUtils.validate_initials(1,BitmapUtils::MAX_LENGTH + 1)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
+			it 'should raise exception with wrong initial param2 type' do
+				expect {BitmapUtils.validate_sizes(1,'Width','1', 'Height')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
+			end
+
+			it 'should raise exception with zero param2' do
+				expect {BitmapUtils.validate_sizes(1,'Width',0, 'Height')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
+			end
+
+			it 'should raise exception with param2 more than BitmapUtils::MAX_LENGTH' do
+				expect {BitmapUtils.validate_sizes(1,'Width',BitmapUtils::MAX_LENGTH + 1, 'Height')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
 	end
 
+	describe '.validate_colour' do
+
+		it 'should raise ArgumentError with no argument' do
+			expect {BitmapUtils.validate_colour}.to raise_error(ArgumentError)
+		end
+
+		it 'should raise exception with wrong colour type' do
+			expect {BitmapUtils.validate_colour('c')}.to raise_error(ArgumentError, 'Colour should be a single capital letter')
+		end
+
+		it 'should raise exception with wrong colour more than 1 character' do
+			expect {BitmapUtils.validate_colour('CC')}.to raise_error(ArgumentError, 'Colour should be a single capital letter')
+		end
+
+		it 'should not raise exception with single capital letter' do
+			expect {BitmapUtils.validate_colour('C')}.not_to raise_error
+		end
+
+	end
 end
