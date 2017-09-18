@@ -49,35 +49,36 @@ describe BitmapInitializeCommand do
 
 		end
 
-		describe '#execute' do
-			before do
-				@bitmap_initialize_command = BitmapInitializeCommand.new(10,20)
-			end
+	end
 
-			it 'should accept one argument' do
-				expect {@bitmap_initialize_command.execute}.to raise_error(ArgumentError)
-			end
+	describe '#execute' do
+		before do
+			@bitmap_initialize_command = BitmapInitializeCommand.new(10,20)
+		end
 
-			it 'should return a bitmap object with height and width specified in initialization' do
-				bitmap, _, _ = @bitmap_initialize_command.execute(nil)
+		it 'should accept one argument' do
+			expect {@bitmap_initialize_command.execute}.to raise_error(ArgumentError)
+		end
 
-				expect(bitmap.width).to eq(10)
-				expect(bitmap.height).to eq(20)
-			end
+		it 'should return a bitmap object with height and width specified in initialization' do
+			bitmap, _, _ = @bitmap_initialize_command.execute(nil)
 
-			it 'should return empty string as output_message' do
-				_, output_message, _ = @bitmap_initialize_command.execute(nil)
+			expect(bitmap.width).to eq(10)
+			expect(bitmap.height).to eq(20)
+		end
 
-				expect(output_message).to eq('')
-			end
+		it 'should return empty string as output_message' do
+			_, output_message, _ = @bitmap_initialize_command.execute(nil)
 
-			it 'should return empty string as error_message' do
-				_, _, error_message = @bitmap_initialize_command.execute(nil)
+			expect(output_message).to eq('')
+		end
 
-				expect(error_message).to eq('')
-			end
+		it 'should return empty string as error_message' do
+			_, _, error_message = @bitmap_initialize_command.execute(nil)
 
+			expect(error_message).to eq('')
 		end
 
 	end
+
 end
