@@ -1,6 +1,6 @@
-require 'bitmap_command'
+require 'command'
 
-class BitmapInitializeCommand < BitmapCommand
+class InitializeCommand < Command
 	attr_reader :width, :height
 
 	def initialize(new_width, new_height)

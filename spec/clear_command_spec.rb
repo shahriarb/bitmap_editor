@@ -1,18 +1,18 @@
-require 'bitmap_clear_command'
+require 'clear_command'
 
-describe BitmapClearCommand do
+describe ClearCommand do
 
 	describe '#initilize' do
 		context 'With wrong initial values' do
 			it 'should raise ArgumentError if any argument passed' do
-				expect {BitmapClearCommand.new(nil)}.to raise_error(ArgumentError)
+				expect {ClearCommand.new(nil)}.to raise_error(ArgumentError)
 			end
 		end
 	end
 
 	describe '#execute' do
 		before do
-			@bitmap_clear_command = BitmapClearCommand.new
+			@bitmap_clear_command = ClearCommand.new
 		end
 
 		it 'should accept one argument' do

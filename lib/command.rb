@@ -1,4 +1,4 @@
-class BitmapCommand
+class Command
 	def execute
 		raise NotImplementedError.new
 	end

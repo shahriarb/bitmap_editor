@@ -1,6 +1,6 @@
-require 'bitmap_command'
+require 'command'
 
-class BitmapColourCommand < BitmapCommand
+class ColourCommand < Command
 	attr_reader :x, :y, :colour
 
 	def initialize(new_x, new_y, new_colour)

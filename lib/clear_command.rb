@@ -1,7 +1,7 @@
-require 'bitmap_command'
+require 'command'
 require 'bitmap'
 
-class BitmapClearCommand < BitmapCommand
+class ClearCommand < Command
 	def execute(a_bitmap)
 		return a_bitmap, '', 'This command needs a valid bitmap' unless a_bitmap.is_a? Bitmap
 
