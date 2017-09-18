@@ -4,7 +4,8 @@ class BitmapInitializeCommand < BitmapCommand
 	attr_reader :width, :height
 
 	def initialize(new_width, new_height)
-		BitmapUtils.validate_sizes(new_width, 'Width', new_height, 'Height')
+		BitmapUtils.validate_size(new_width, 'Width')
+		BitmapUtils.validate_size(new_height, 'Height')
 		@width = new_width
 		@height = new_height
 	end

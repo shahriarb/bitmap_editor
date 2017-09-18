@@ -6,7 +6,8 @@ class Bitmap
 	COLOUR_WHITE = 'O'
 
 	def initialize(new_width, new_height)
-		BitmapUtils.validate_sizes(new_width, 'Width', new_height, 'Height')
+		BitmapUtils.validate_size(new_width, 'Width')
+		BitmapUtils.validate_size(new_height, 'Height')
 		@width = new_width
 		@height = new_height
 		self.clear
@@ -36,7 +37,8 @@ class Bitmap
 	private
 
 	def validate_coordinate(x,y)
-		BitmapUtils.validate_sizes(x, 'X', y, 'Y')
+		BitmapUtils.validate_size(x, 'X')
+		BitmapUtils.validate_size( y, 'Y')
 		raise ArgumentError.new("X should be less than width(#{@width})") if x > @width
 		raise ArgumentError.new("Y should be less than height(#{@height})") if y > @height
 	end

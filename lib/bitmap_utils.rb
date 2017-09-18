@@ -7,9 +7,8 @@ class BitmapUtils
 		param.is_a?(Integer) && param > 0 && param <= MAX_LENGTH
 	end
 
-	def self.validate_sizes(param1,param1_label, param2, param2_label )
-		raise ArgumentError.new("#{param1_label} #{SIZE_PARAM_ERROR}") unless self.valid_size_param?param1
-		raise ArgumentError.new("#{param2_label} #{SIZE_PARAM_ERROR}") unless self.valid_size_param? param2
+	def self.validate_size(size,size_label)
+		raise ArgumentError.new("#{size_label} #{SIZE_PARAM_ERROR}") unless self.valid_size_param?size
 	end
 
 	def self.validate_colour(new_colour)
