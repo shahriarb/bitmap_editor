@@ -99,14 +99,15 @@ describe BitmapColourCommand do
 			expect(error_message).to eq('Y should be less than height(1)')
 		end
 
-		it 'should change the colour of x, y in bitmap to C with no error message' do
+		it 'should change the colour of x, y in bitmap to C with no output no error' do
 			bitmap = Bitmap.new(20,40)
 			expect(bitmap.get_colour(10, 20)).to eq(Bitmap::COLOUR_WHITE)
 
-			result_bitmap, _, error_message = @bitmap_colour_command.execute(bitmap)
+			result_bitmap, output_message, error_message = @bitmap_colour_command.execute(bitmap)
 
 			expect(result_bitmap.get_colour(10, 20)).to eq('C')
 			expect(error_message).to eq('')
+			expect(output_message).to eq('')
 		end
 
 	end
