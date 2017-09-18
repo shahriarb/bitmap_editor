@@ -35,7 +35,7 @@ describe ColourCommand do
 				expect {ColourCommand.new(1, 0, 'C')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with height more than BitmapUtils::MAX_LENGTH' do
+			it 'should raise exception with Y more than BitmapUtils::MAX_LENGTH' do
 				expect {ColourCommand.new(1, BitmapUtils::MAX_LENGTH + 1, 'C')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
@@ -71,31 +71,31 @@ describe ColourCommand do
 
 	describe '#execute' do
 		before do
-			@bitmap_colour_command = ColourCommand.new(10, 20, 'C')
+			@colour_command = ColourCommand.new(10, 20, 'C')
 		end
 
 		it 'should accept one argument' do
-			expect {@bitmap_colour_command.execute}.to raise_error(ArgumentError)
+			expect {@colour_command.execute}.to raise_error(ArgumentError)
 		end
 
 		it 'should accept only one argument' do
-			expect {@bitmap_colour_command.execute(nil,nil)}.to raise_error(ArgumentError)
+			expect {@colour_command.execute(nil,nil)}.to raise_error(ArgumentError)
 		end
 
 		it 'should return error if argument is not a valid bitmap' do
-			_, _, error_message = @bitmap_colour_command.execute(nil)
+			_, _, error_message = @colour_command.execute(nil)
 			expect(error_message).to eq('This command needs a valid bitmap')
 		end
 
 		it 'should return error if width of bitmap is lass than X coordinate' do
 			bitmap = Bitmap.new(1,1)
-			_, _, error_message = @bitmap_colour_command.execute(bitmap)
+			_, _, error_message = @colour_command.execute(bitmap)
 			expect(error_message).to eq('X should be less than width(1)')
 		end
 
 		it 'should return error if height of bitmap is lass than Y coordinate' do
 			bitmap = Bitmap.new(10,1)
-			_, _, error_message = @bitmap_colour_command.execute(bitmap)
+			_, _, error_message = @colour_command.execute(bitmap)
 			expect(error_message).to eq('Y should be less than height(1)')
 		end
 
@@ -103,7 +103,7 @@ describe ColourCommand do
 			bitmap = Bitmap.new(20,40)
 			expect(bitmap.get_colour(10, 20)).to eq(Bitmap::COLOUR_WHITE)
 
-			result_bitmap, output_message, error_message = @bitmap_colour_command.execute(bitmap)
+			result_bitmap, output_message, error_message = @colour_command.execute(bitmap)
 
 			expect(result_bitmap.get_colour(10, 20)).to eq('C')
 			expect(error_message).to eq('')

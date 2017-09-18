@@ -53,15 +53,15 @@ describe InitializeCommand do
 
 	describe '#execute' do
 		before do
-			@bitmap_initialize_command = InitializeCommand.new(10, 20)
+			@initialize_command = InitializeCommand.new(10, 20)
 		end
 
 		it 'should accept one argument' do
-			expect {@bitmap_initialize_command.execute}.to raise_error(ArgumentError)
+			expect {@initialize_command.execute}.to raise_error(ArgumentError)
 		end
 
 		it 'should return a bitmap object with height and width specified in initialization with no output no error' do
-			bitmap, output_message, error_message = @bitmap_initialize_command.execute(nil)
+			bitmap, output_message, error_message = @initialize_command.execute(nil)
 
 			expect(bitmap.width).to eq(10)
 			expect(bitmap.height).to eq(20)
@@ -70,13 +70,13 @@ describe InitializeCommand do
 		end
 
 		it 'should return empty string as output_message' do
-			_, output_message, _ = @bitmap_initialize_command.execute(nil)
+			_, output_message, _ = @initialize_command.execute(nil)
 
 			expect(output_message).to eq('')
 		end
 
 		it 'should return empty string as error_message' do
-			_, _, error_message = @bitmap_initialize_command.execute(nil)
+			_, _, error_message = @initialize_command.execute(nil)
 
 			expect(error_message).to eq('')
 		end
