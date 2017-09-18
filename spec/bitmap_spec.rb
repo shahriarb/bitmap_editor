@@ -24,10 +24,6 @@ describe Bitmap do
 				expect {Bitmap.new(1)}.to raise_error(ArgumentError)
 			end
 
-			it 'should raise ArgumentError with one initial argument' do
-				expect {Bitmap.new(1)}.to raise_error(ArgumentError)
-			end
-
 			it 'should raise exception with wrong initial width type' do
 				expect {Bitmap.new('1',1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
 			end
