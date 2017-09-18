@@ -144,12 +144,12 @@ describe VlineCommand do
 
 		context 'given the y1(30) greater than y2(20) should set colour for all pixels between y2 and y1 to C' do
 			it 'should change the colour of all pixels with y between 20-30 to C with no output no error' do
-				@vline_command = VlineCommand.new(10, 30, 20, 'C')
+				vline_command = VlineCommand.new(10, 30, 20, 'C')
 
 				bitmap = Bitmap.new(20,40)
 				20.upto(30) {|y| expect(bitmap.get_colour(10, y)).to eq(Bitmap::COLOUR_WHITE)     }
 
-				result_bitmap, output_message, error_message = @vline_command.execute(bitmap)
+				result_bitmap, output_message, error_message = vline_command.execute(bitmap)
 
 				20.upto(30) {|y| expect(result_bitmap.get_colour(10, y)).to eq('C')     }
 
