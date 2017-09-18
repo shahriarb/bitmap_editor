@@ -6,14 +6,6 @@ describe Bitmap do
 		expect(Bitmap::COLOUR_WHITE).to eq('O')
 	end
 
-	it 'has a MAX_LENGTH constant with value 25O' do
-		expect(Bitmap::MAX_LENGTH).to eq(250)
-	end
-
-	it 'has a SIZE_PARAM_ERROR constant with value "should be a valid integer between 1 and MAX_LENGTH"' do
-		expect(Bitmap::SIZE_PARAM_ERROR).to eq("should be a valid integer between 1 and #{Bitmap::MAX_LENGTH}")
-	end
-
 	describe '#initialize' do
 		context  'With wrong initial values' do
 			it 'should raise ArgumentError with no initial argument' do
@@ -25,27 +17,27 @@ describe Bitmap do
 			end
 
 			it 'should raise exception with wrong initial width type' do
-				expect {Bitmap.new('1',1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new('1',1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with zero width' do
-				expect {Bitmap.new(0,1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(0,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with width more than Bitmap::MAX_LENGTH' do
-				expect {Bitmap.new(Bitmap::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+			it 'should raise exception with width more than BitmapUtils::MAX_LENGTH' do
+				expect {Bitmap.new(BitmapUtils::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with wrong initial height type' do
-				expect {Bitmap.new(1,'1')}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(1,'1')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with zero height' do
-				expect {Bitmap.new(1,0)}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(1,0)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with height more than Bitmap::MAX_LENGTH' do
-				expect {Bitmap.new(1,Bitmap::MAX_LENGTH + 1)}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+			it 'should raise exception with height more than BitmapUtils::MAX_LENGTH' do
+				expect {Bitmap.new(1,BitmapUtils::MAX_LENGTH + 1)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 		end
@@ -107,11 +99,11 @@ describe Bitmap do
 			end
 
 			it 'should raise exception with wrong X type' do
-				expect {Bitmap.new(10,20).set_colour('1',1, 'C')}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(10,20).set_colour('1',1, 'C')}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with wrong Y type' do
-				expect {Bitmap.new(10,20).set_colour(1,'1', 'C')}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(10,20).set_colour(1,'1', 'C')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with wrong colour type' do
@@ -125,13 +117,13 @@ describe Bitmap do
 
 		context 'given x coordinate less than 1' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).set_colour(0,1,'C')}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).set_colour(0,1,'C')}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
-		context 'given x coordinate greater than Bitmap::MAX_LENGTH' do
+		context 'given x coordinate greater than BitmapUtils::MAX_LENGTH' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).set_colour(Bitmap::MAX_LENGTH + 1,1,'C')}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).set_colour(BitmapUtils::MAX_LENGTH + 1,1,'C')}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
@@ -143,13 +135,13 @@ describe Bitmap do
 
 		context 'given y coordinate less than 1' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).set_colour(1,0,'C')}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).set_colour(1,0,'C')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
-		context 'given Y coordinate greater than Bitmap::MAX_LENGTH' do
+		context 'given Y coordinate greater than BitmapUtils::MAX_LENGTH' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).set_colour(1,Bitmap::MAX_LENGTH + 1,'C')}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).set_colour(1,BitmapUtils::MAX_LENGTH + 1,'C')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
@@ -180,24 +172,24 @@ describe Bitmap do
 			end
 
 			it 'should raise exception with wrong X type' do
-				expect {Bitmap.new(10,20).get_colour('1',1)}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(10,20).get_colour('1',1)}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with wrong Y type' do
-				expect {Bitmap.new(10,20).get_colour(1,'1')}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {Bitmap.new(10,20).get_colour(1,'1')}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 		end
 
 		context 'given x coordinate less than 1' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).get_colour(0,1)}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).get_colour(0,1)}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
-		context 'given x coordinate greater than Bitmap::MAX_LENGTH' do
+		context 'given x coordinate greater than BitmapUtils::MAX_LENGTH' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).get_colour(Bitmap::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError, "X #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).get_colour(BitmapUtils::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError, "X #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
@@ -209,13 +201,13 @@ describe Bitmap do
 
 		context 'given y coordinate less than 1' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).get_colour(1,0)}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).get_colour(1,0)}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 
-		context 'given Y coordinate greater than Bitmap::MAX_LENGTH' do
+		context 'given Y coordinate greater than BitmapUtils::MAX_LENGTH' do
 			it 'should raise exception' do
-				expect { Bitmap.new(10,20).get_colour(1,Bitmap::MAX_LENGTH + 1)}.to raise_error(ArgumentError, "Y #{Bitmap::SIZE_PARAM_ERROR}")
+				expect { Bitmap.new(10,20).get_colour(1,BitmapUtils::MAX_LENGTH + 1)}.to raise_error(ArgumentError, "Y #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 		end
 

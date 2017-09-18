@@ -12,27 +12,27 @@ describe BitmapInitializeCommand do
 			end
 
 			it 'should raise exception with wrong initial width type' do
-				expect {BitmapInitializeCommand.new('1',1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {BitmapInitializeCommand.new('1',1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with zero width' do
-				expect {BitmapInitializeCommand.new(0,1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {BitmapInitializeCommand.new(0,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with width more than Bitmap::MAX_LENGTH' do
-				expect {BitmapInitializeCommand.new(Bitmap::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError,"Width #{Bitmap::SIZE_PARAM_ERROR}")
+			it 'should raise exception with width more than BitmapUtils::MAX_LENGTH' do
+				expect {BitmapInitializeCommand.new(BitmapUtils::MAX_LENGTH + 1,1)}.to raise_error(ArgumentError,"Width #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with wrong initial height type' do
-				expect {BitmapInitializeCommand.new(1,'1')}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {BitmapInitializeCommand.new(1,'1')}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			it 'should raise exception with zero height' do
-				expect {BitmapInitializeCommand.new(1,0)}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+				expect {BitmapInitializeCommand.new(1,0)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
-			it 'should raise exception with height more than Bitmap::MAX_LENGTH' do
-				expect {BitmapInitializeCommand.new(1,Bitmap::MAX_LENGTH + 1)}.to raise_error(ArgumentError,"Height #{Bitmap::SIZE_PARAM_ERROR}")
+			it 'should raise exception with height more than BitmapUtils::MAX_LENGTH' do
+				expect {BitmapInitializeCommand.new(1,BitmapUtils::MAX_LENGTH + 1)}.to raise_error(ArgumentError,"Height #{BitmapUtils::SIZE_PARAM_ERROR}")
 			end
 
 			context 'given 10 as width' do
