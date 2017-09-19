@@ -23,7 +23,7 @@ class VlineCommand < Command
 	end
 
 	def execute(a_bitmap)
-		return a_bitmap, '', 'This command needs a valid bitmap' unless a_bitmap.is_a? Bitmap
+		return a_bitmap, '', Command::INVALID_BITMAP_ERROR unless a_bitmap.is_a? Bitmap
 		return a_bitmap, '', "X should be less than width(#{a_bitmap.width})" if @x > a_bitmap.width
 		return a_bitmap, '', "Y1 should be less than height(#{a_bitmap.height})" if @y1 > a_bitmap.height
 		return a_bitmap, '', "Y2 should be less than height(#{a_bitmap.height})" if @y2 > a_bitmap.height

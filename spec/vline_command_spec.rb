@@ -106,7 +106,7 @@ describe VlineCommand do
 
 		it 'should return error if argument is not a valid bitmap' do
 			_, _, error_message = @vline_command.execute(nil)
-			expect(error_message).to eq('This command needs a valid bitmap')
+			expect(error_message).to eq(Command::INVALID_BITMAP_ERROR)
 		end
 
 		it 'should return error if width of bitmap is lass than X coordinate' do

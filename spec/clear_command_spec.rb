@@ -25,7 +25,7 @@ describe ClearCommand do
 
 		it 'should return error if argument is not a valid bitmap' do
 			_, _, error_message = @clear_command.execute(nil)
-			expect(error_message).to eq('This command needs a valid bitmap')
+			expect(error_message).to eq(Command::INVALID_BITMAP_ERROR)
 		end
 
 		it 'should clear the passed bitmap with no output no error' do
