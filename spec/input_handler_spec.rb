@@ -119,9 +119,9 @@ describe InputHandler do
 			end
 
 			it 'should return list of commands and their parameters with no error for a multi line file' do
-				commands, errors = InputHandler.load_from_file('examples/create_show.txt')
+				commands, errors = InputHandler.load_from_file('examples/init_show.txt')
 				expect(commands.size).to be 2
-				expect(commands.first).to eq({:command => :initialize, :params => ['10', '20']})
+				expect(commands.first).to eq({:command => :initialize, :params => ['2', '3']})
 				expect(commands.last).to eq({:command => :show, :params => []})
 				expect(errors).to eq([])
 			end

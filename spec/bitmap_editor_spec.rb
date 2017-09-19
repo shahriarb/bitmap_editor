@@ -41,5 +41,26 @@ describe BitmapEditor do
 				end
 			end
 		end
+
+		context 'given a valid file' do
+			context 'given an :initialize and :show' do
+				it 'should print bitmap with white colour and no error' do
+					expect {BitmapEditor.new.run('examples/init_show.txt')}.to output("OO\nOO\nOO\n").to_stdout
+				end
+			end
+
+			context 'given an :initialize and :vline :show' do
+				it 'should changed bitmap and no error' do
+					expect {BitmapEditor.new.run('examples/init_vline_show.txt')}.to output("OO\nOC\nOC\n").to_stdout
+				end
+			end
+
+			context 'given no :show' do
+				it 'should output nothing and no error' do
+					expect {BitmapEditor.new.run('examples/no_show.txt')}.to output('').to_stdout
+				end
+			end
+
+		end
 	end
 end
