@@ -1,5 +1,5 @@
-require 'command'
-require 'bitmap'
+require_relative 'command'
+require_relative 'bitmap'
 
 class ShowCommand < Command
 	def execute(a_bitmap)

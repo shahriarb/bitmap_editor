@@ -1,4 +1,4 @@
-require 'command'
+require_relative 'command'
 
 class HlineCommand < Command
 	attr_reader :x1, :x2, :y, :colour

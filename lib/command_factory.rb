@@ -1,9 +1,9 @@
-require 'initialize_command'
-require 'clear_command'
-require 'colour_command'
-require 'vline_command'
-require 'hline_command'
-require 'show_command'
+require_relative 'initialize_command'
+require_relative 'clear_command'
+require_relative 'colour_command'
+require_relative 'vline_command'
+require_relative 'hline_command'
+require_relative 'show_command'
 
 class CommandFactory
 	VALID_COMMANDS = [:initialize, :clear, :colour, :vline, :hline, :show]

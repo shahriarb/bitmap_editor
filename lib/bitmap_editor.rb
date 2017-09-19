@@ -1,19 +1,21 @@
 class BitmapEditor
 
 	def run(file)
+		commands, errors = InputHandler.load_from_file(file)
+		return puts errors.join("\n") unless errors.empty?
 
 
+		command_list = CommandList.new
+		errors = []
 
-		return puts 'please provide correct file' if file.nil? || !File.exists?(file)
-
-		File.open(file).each do |line|
-			line = line.chomp
-			case line
-				when 'S'
-					puts 'There is no image'
-				else
-					puts 'unrecognised command :('
+		commands.each_with_index do |command, index|
+			begin
+				command_list.add_command(CommandFactory.create(command[:command],*command[:params]))
+			rescue => exc
+				errors << "Error line(#{index + 1}):\n#{exc.message}"
 			end
 		end
+
+		return puts errors.join("\n") unless errors.empty?
 	end
 end

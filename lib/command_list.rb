@@ -1,4 +1,4 @@
-require 'command'
+require_relative 'command'
 
 class CommandList
 	attr_reader :commands, :bitmap

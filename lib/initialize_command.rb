@@ -1,4 +1,4 @@
-require 'command'
+require_relative 'command'
 
 class InitializeCommand < Command
 	attr_reader :width, :height

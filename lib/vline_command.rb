@@ -1,4 +1,4 @@
-require 'command'
+require_relative 'command'
 
 class VlineCommand < Command
 	attr_reader :x, :y1, :y2, :colour

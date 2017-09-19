@@ -1,4 +1,4 @@
-require 'command'
+require_relative 'command'
 
 class ColourCommand < Command
 	attr_reader :x, :y, :colour

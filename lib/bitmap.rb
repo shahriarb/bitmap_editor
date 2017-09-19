@@ -1,4 +1,4 @@
-require 'bitmap_utils'
+require_relative 'bitmap_utils'
 
 class Bitmap
 	attr_reader :width, :height,:pixels

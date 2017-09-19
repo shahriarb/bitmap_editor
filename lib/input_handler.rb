@@ -1,3 +1,5 @@
+require_relative 'command_factory'
+
 class InputHandler
 	def self.parse_line(new_line)
 		raise ArgumentError.new('Input line can not be empty') if new_line.nil? || new_line.empty?
