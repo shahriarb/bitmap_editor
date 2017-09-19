@@ -34,7 +34,12 @@ describe BitmapEditor do
 					expect { BitmapEditor.new.run('examples/wrong_param.txt') }.to output("Error line(1):\nHeight should be a valid integer between 1 and 250\nError line(3):\nX #{BitmapUtils::SIZE_PARAM_ERROR}\n").to_stdout
 				end
 			end
-		end
 
+			context 'given a file with :show before :initialize' do
+				it 'should return error with line number' do
+					expect { BitmapEditor.new.run('examples/show.txt') }.to output("Error line(1):\nThere is no image\n").to_stdout
+				end
+			end
+		end
 	end
 end

@@ -15,7 +15,14 @@ class BitmapEditor
 				errors << "Error line(#{index + 1}):\n#{exc.message}"
 			end
 		end
-
 		return puts errors.join("\n") unless errors.empty?
+
+		_, output_message, error_message = command_list.execute(nil)
+
+		if error_message == ''
+			puts output_message
+		else
+			puts error_message
+		end
 	end
 end

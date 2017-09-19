@@ -17,11 +17,14 @@ class CommandList
 		@bitmap = a_bitmap
 		output_message = ''
 		error_message = ''
-		@commands.each do |command|
+		@commands.each_with_index do |command, index|
 			@bitmap, output, error_message = command.execute(@bitmap)
 			output_message += "\n" unless output_message == ''
 			output_message += output
-			break unless error_message == ''
+			if error_message != ''
+				error_message = "Error line(#{index + 1}):\n#{error_message}"
+				break
+			end
 		end
 
 		return @bitmap, output_message, error_message

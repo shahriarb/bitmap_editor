@@ -79,7 +79,7 @@ describe CommandList do
 
 			expect(result_bitmap).to be_nil
 			expect(output_message).to eq('')
-			expect(error_message).to eq(Command::INVALID_BITMAP_ERROR)
+			expect(error_message).to eq("Error line(1):\n#{Command::INVALID_BITMAP_ERROR}")
 		end
 
 		it 'should return the result of execute as the output' do
