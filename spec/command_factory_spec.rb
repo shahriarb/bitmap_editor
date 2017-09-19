@@ -66,7 +66,7 @@ describe CommandFactory do
 		end
 
 		it 'has a constant called INVALID_ABBR' do
-			expect(CommandFactory::INVALID_ABBR).to eq('abbreviation is not valid')
+			expect(CommandFactory::INVALID_ABBR).to eq('unrecognised command')
 		end
 
 		it 'has a constant called INVALID_COMMAND' do

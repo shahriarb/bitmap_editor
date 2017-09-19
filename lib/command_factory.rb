@@ -17,7 +17,7 @@ class CommandFactory
 		:show		=> 'S'
 	}
 
-	INVALID_ABBR = 'abbreviation is not valid'
+	INVALID_ABBR = 'unrecognised command'
 	INVALID_COMMAND = 'command is not valid'
 
 	def self.abbr_to_command(abbreviation)

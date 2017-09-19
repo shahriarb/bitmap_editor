@@ -1,6 +1,6 @@
 class Command
 
-	INVALID_BITMAP_ERROR = 'This command needs a valid bitmap'
+	INVALID_BITMAP_ERROR = 'There is no image'
 
 	def execute
 		raise NotImplementedError.new

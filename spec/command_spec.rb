@@ -3,7 +3,7 @@ require 'command'
 describe Command do
 
 	it 'has a INVALID_BITMAP_ERROR constant' do
-		expect(Command::INVALID_BITMAP_ERROR).to eq('This command needs a valid bitmap')
+		expect(Command::INVALID_BITMAP_ERROR).to eq('There is no image')
 	end
 
 	context 'calling execute' do

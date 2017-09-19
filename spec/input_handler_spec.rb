@@ -60,7 +60,7 @@ describe InputHandler do
 
 		context 'given a line starts with an invalid abbreviation' do
 			it 'should raise an exception' do
-				expect {InputHandler.parse_line('mike is 10')}.to raise_error(ArgumentError,'abbreviation is not valid')
+				expect {InputHandler.parse_line('mike is 10')}.to raise_error(ArgumentError,CommandFactory::INVALID_ABBR)
 			end
 		end
 
@@ -132,8 +132,8 @@ describe InputHandler do
 				it 'should return error with line number' do
 					_, errors = InputHandler.load_from_file('examples/wrong_abbr.txt')
 					expect(errors.size).to be 2
-					expect(errors.first).to eq("Error line(1):\nabbreviation is not valid")
-					expect(errors.last).to eq("Error line(2):\nabbreviation is not valid")
+					expect(errors.first).to eq("Error line(1):\n#{CommandFactory::INVALID_ABBR}")
+					expect(errors.last).to eq("Error line(2):\n#{CommandFactory::INVALID_ABBR}")
 				end
 			end
 
