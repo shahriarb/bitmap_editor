@@ -1,4 +1,6 @@
 require_relative 'command'
+require_relative 'bitmap_utils'
+require_relative 'bitmap'
 
 class HlineCommand < Command
 	attr_reader :x1, :x2, :y, :colour

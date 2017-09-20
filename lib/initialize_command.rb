@@ -1,4 +1,6 @@
 require_relative 'command'
+require_relative 'bitmap_utils'
+require_relative 'bitmap'
 
 class InitializeCommand < Command
 	attr_reader :width, :height

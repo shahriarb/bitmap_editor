@@ -22,7 +22,7 @@ class CommandList
 			output_message += "\n" unless output_message == ''
 			output_message += output
 			if error_message != ''
-				error_message = "Error line(#{index + 1}):\n#{error_message}"
+				error_message = "Error line(#{index + 1}):\t#{error_message}"
 				break
 			end
 		end

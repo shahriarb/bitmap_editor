@@ -1,5 +1,8 @@
-class BitmapEditor
+require_relative 'input_handler'
+require_relative 'command_list'
+require_relative 'command_factory'
 
+class BitmapEditor
 	def run(file)
 		commands, errors = InputHandler.load_from_file(file)
 		return puts errors.join("\n") unless errors.empty?
@@ -12,7 +15,7 @@ class BitmapEditor
 			begin
 				command_list.add_command(CommandFactory.create(command[:command],*command[:params]))
 			rescue => exc
-				errors << "Error line(#{index + 1}):\n#{exc.message}"
+				errors << "Error line(#{index + 1}):\t#{exc.message}"
 			end
 		end
 

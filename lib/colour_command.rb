@@ -1,4 +1,6 @@
+require_relative 'bitmap_utils'
 require_relative 'command'
+require_relative 'bitmap'
 
 class ColourCommand < Command
 	attr_reader :x, :y, :colour

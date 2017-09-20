@@ -21,7 +21,7 @@ class InputHandler
 			begin
 				commands << self.parse_line(line.strip)
 			rescue => exc
-				errors << "Error line(#{index}):\n#{exc.message}"
+				errors << "Error line(#{index}):\t#{exc.message}"
 			end
 		end
 

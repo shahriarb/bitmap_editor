@@ -132,15 +132,15 @@ describe InputHandler do
 				it 'should return error with line number' do
 					_, errors = InputHandler.load_from_file('examples/wrong_abbr.txt')
 					expect(errors.size).to be 2
-					expect(errors.first).to eq("Error line(1):\n#{CommandFactory::INVALID_ABBR}")
-					expect(errors.last).to eq("Error line(2):\n#{CommandFactory::INVALID_ABBR}")
+					expect(errors.first).to eq("Error line(1):\t#{CommandFactory::INVALID_ABBR}")
+					expect(errors.last).to eq("Error line(2):\t#{CommandFactory::INVALID_ABBR}")
 				end
 			end
 
 			context 'given an empty file' do
 				it 'should return error an empty line error' do
 					_, errors = InputHandler.load_from_file('examples/empty.txt')
-					expect(errors.first).to eq("Error line(1):\nInput line can not be empty")
+					expect(errors.first).to eq("Error line(1):\tInput line can not be empty")
 				end
 			end
 		end
